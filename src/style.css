@@ -1,7 +1,7 @@
 html,
 body {
   height: 100%;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Georgia, Times, 'Times New Roman', serif;
   background-color: wheat;
 }
 
@@ -22,6 +22,14 @@ body {
   align-items: center;
 }
 
+.title {
+  font-family: Georgia, Times, 'Times New Roman', serif;
+  font-size: 45px;
+  color: black;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
 .board-container {
   height: 100%;
   width: 100%;
@@ -35,4 +43,8 @@ body {
   width: 200px;
   height: 200px;
   border: 3px solid navy;
+}
+
+.square:hover {
+  background-color: floralwhite;
 }
