@@ -6,6 +6,9 @@ $(document).ready(function() {
   let movesMade = 0;
 
   let sqr = $(".square");
+  let winnerContainer = $(".winner");
+  let reset = $(".reset");
+
   sqr.on("click", function(e) {
     movesMade++;
 
@@ -18,6 +21,22 @@ $(document).ready(function() {
       event.target.style.color = "black";
       currentTurn--;
     }
+
+    if (checkForWinner()) {
+      let theWinner = currentTurn === 1 ? player2 : player1;
+      declareWinner(theWinner);
+    }
+  });
+
+  reset.on("click", function(e) {
+    let moves = Array.prototype.slice.call($(".square"));
+    moves.map(m => {
+      m.innerHTML = "";
+    });
+    winnerContainer.html("");
+    winnerContainer.css("display", "none");
+    currentTurn = 1;
+    movesMade = 0;
   });
 
   function checkForWinner() {
@@ -27,7 +46,7 @@ $(document).ready(function() {
         return square.innerHTML;
       });
 
-      let winningCombinations = [
+      let winningCombos = [
         [0, 1, 2],
         [3, 4, 5],
         [6, 7, 8],
@@ -37,7 +56,7 @@ $(document).ready(function() {
         [0, 4, 8],
         [2, 4, 6]
       ];
-      return winningCombinations.find(function(combo) {
+      return winningCombos.find(function(combo) {
         if (
           results[combo[0]] !== "" &&
           results[combo[1]] !== "" &&
@@ -50,6 +69,13 @@ $(document).ready(function() {
           return false;
         }
       });
+    }
+
+    function declareWinner(winner) {
+      winnerContainer.css("display", "block");
+      reset.css("display", "block");
+      winner = winner === player1 ? "Player 1" : "Player2";
+      winnerContainer.html(winner + "Wins!");
     }
   }
 });
