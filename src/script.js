@@ -70,12 +70,11 @@ $(document).ready(function() {
         }
       });
     }
-
-    function declareWinner(winner) {
-      winnerContainer.css("display", "block");
-      reset.css("display", "block");
-      winner = winner === player1 ? "Player 1" : "Player2";
-      winnerContainer.html(winner + "Wins!");
-    }
+  }
+  function declareWinner(winner) {
+    winnerContainer.css("display", "block");
+    reset.css("display", "block");
+    winner = winner === player1 ? "Player 1" : "Player2";
+    winnerContainer.html(winner + "Wins!");
   }
 });
